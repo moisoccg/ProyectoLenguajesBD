@@ -29,7 +29,7 @@ public class Conexion {
 //Se suscribe el controlador de la BD
     Class.forName("oracle.jdbc.driver.OracleDriver").getDeclaredConstructor().newInstance();
 //Se crea una conexion con la base de datos
-    conn = DriverManager.getConnection(DBURL, "ASO", "ASO");
+    conn = DriverManager.getConnection(DBURL, "USQL", "USQL");
     }catch (ClassNotFoundException |
         NoSuchMethodException |
         SecurityException |

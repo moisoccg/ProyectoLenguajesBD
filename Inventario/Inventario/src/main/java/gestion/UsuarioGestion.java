@@ -8,6 +8,7 @@ package gestion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Conexion;
@@ -44,4 +45,24 @@ public class UsuarioGestion {
 
         return usuario;
     }
+    
+    public static ArrayList<Usuario> getUsuarios(){
+        ArrayList<Usuario> lista = new ArrayList<>();
+        try{
+            String  SQL_SELECT_USUARIOS="Select * from usuario inner join roles on usuario.idrol = roles.idRol";
+            PreparedStatement sentencia = Conexion.getConnection().prepareStatement(SQL_SELECT_USUARIOS);
+            ResultSet rs = sentencia.executeQuery();
+            
+            while(rs!= null && rs.next()){
+                lista.add(new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3),
+                rs.getString(4),rs.getString(5),
+                new Roles (rs.getInt(7), rs.getString(8))));
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return lista;
+    }
+    
+    
 }

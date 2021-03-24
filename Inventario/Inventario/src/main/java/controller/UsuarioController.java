@@ -9,6 +9,7 @@ import gestion.UsuarioGestion;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import modelo.Usuario;
 import net.bootsfaces.utils.FacesMessages;
 /**
@@ -39,7 +40,7 @@ public class UsuarioController extends Usuario implements Serializable {
 
             if (this.getRol().getIdRol()==1) {
                 System.out.println("Soy administrador");
-                return "hola.xhtml";
+                return "PrincipalAdmin.xhtml";
             }
             else{
                 return "hola1.xhtml";
@@ -50,5 +51,9 @@ public class UsuarioController extends Usuario implements Serializable {
  
             return "index.xhtml";
         }
+    }
+    
+      public List<Usuario> getUsuarios(){
+        return UsuarioGestion.getUsuarios();
     }
 }
