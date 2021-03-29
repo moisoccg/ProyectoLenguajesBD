@@ -64,5 +64,61 @@ public class UsuarioGestion {
         return lista;
     }
     
+     public static Usuario getUsuario(int Id){
+        Usuario usuario= null;
+            try {
+                String  SQL_SELECT_USUARIO="SELECT * FROM usuario inner join roles on usuario.idrol = roles.idRol WHERE IDUSUARIO = ?";
+                PreparedStatement sentencia = Conexion.getConnection().prepareStatement(SQL_SELECT_USUARIO);
+                sentencia.setInt(1, Id); 
+                
+                 ResultSet rs = sentencia.executeQuery();
+            
+                if(rs.next()){
+                    usuario = new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3),
+                    rs.getString(4),rs.getString(5),
+                    new Roles (rs.getInt(7), rs.getString(8)));
+                }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+      return usuario;
+    }
+     
+    private static final String SQL_DELETE_USUARIO = "call PR_EliminarUsuario(?)";
+
+    public static boolean eliminar(int Id) { //True si lo Elimina/ False si no
+        try {
+            //Preparo la Sentencia
+            PreparedStatement ps = Conexion.getConnection().prepareStatement(SQL_DELETE_USUARIO);
+            //Sustituyo los ? del String SQL por los parametros que corresponden
+            ps.setInt(1, Id);
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE, null, ex);
+             return false;
+        }
+       
+    }
     
+    
+     private static final String SQL_UPDATE_USUARIO = "call PR_ActUsuario(?,?,?)";
+
+    public static boolean modificar(Usuario usuario) { //True si lo Modifica/ False si no
+        try {
+            //Preparo la Sentencia
+            PreparedStatement ps = Conexion.getConnection().prepareStatement(SQL_UPDATE_USUARIO);
+            //Sustituyo los ? del String SQL por los parametros que corresponden
+            ps.setInt(1, usuario.getId());
+            ps.setString(2, usuario.getContraseña());
+            ps.setInt(3, usuario.getRol().getIdRol());
+            return ps.executeUpdate() > 0; //Aqui no es un ResultSet xq al ser un Insert lo q deculve es #de fila de insercion ó 0 si no pudo insertar
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

@@ -1,7 +1,12 @@
-controller\UsuarioController.class
 gestion\UsuarioGestion.class
+modelo\nUsuario.class
+controller\RolesController.class
+controller\UsuarioController.class
+gestion\RolesGestion.class
 modelo\Roles.class
 modelo\Conexion.class
+gestion\nUsuarioGestion.class
 com\mycompany\inventario\JAXRSConfiguration.class
+controller\nUsuarioController.class
 modelo\Usuario.class
 com\mycompany\inventario\resources\JavaEE8Resource.class

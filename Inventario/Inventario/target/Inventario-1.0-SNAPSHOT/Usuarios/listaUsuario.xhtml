@@ -40,11 +40,15 @@
                                            width="10%"
                                            style="text-align: center"
                                            label="Apellido"/>
+                        <b:dataTableColumn value="#{usuarios.cedula}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Cedula"/>
                         <b:dataTableColumn style="text-align: center" width="5%"
                             label="Editar Usuario">
                               <b:commandButton value="Editar"
                                                icon="pencil"
-                                               
+                                                action="#{usuarioController.edita(usuarios.id)}"
                                              look="info"/>
                               
                         </b:dataTableColumn>
