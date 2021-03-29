@@ -7,7 +7,7 @@ public class Usuario {
     private String Apellidos;
     private String Contraseña;
     private String Cedula;
-    private Roles Rol;
+    public Roles Rol;
 
     public Usuario() {
     }

@@ -91,11 +91,16 @@ public class UsuarioController extends Usuario implements Serializable {
     
     public String modifica() {
         if (UsuarioGestion.modificar(this)) { //Si logra modificar
+            this.setId(0);
+            this.setNombre("");
+            this.setApellidos("");
+            this.setContraseña("");
+            this.setCedula("");
             return "listaUsuario.xhtml";
         } else {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Error al modificar Usuario");
             FacesContext.getCurrentInstance().addMessage("editaUsuario:id", msg);
-            return "listaUsuario.xhtml";
+             return "listaUsuario.xhtml";
         }
     }
 }
