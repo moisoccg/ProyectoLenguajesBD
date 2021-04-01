@@ -1,5 +1,8 @@
+modelo\Proveedor.class
 gestion\UsuarioGestion.class
 modelo\nUsuario.class
+controller\ProveedorController.class
+gestion\ProveedorGestion.class
 controller\RolesController.class
 controller\UsuarioController.class
 gestion\RolesGestion.class

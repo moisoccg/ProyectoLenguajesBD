@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Files/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="nuevoProveedorForm">
+                    <b:container fluid="true">
+                        <b:panel title="Nuevo Proveedor" look="primary">
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Nombre"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Nombre"
+                                                 id="nombre"
+                                                 required="true"
+                                                 value="#{proveedorController.nombreProveedor}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="nombre" />
+                                </b:column>
+                            </b:row>   
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Cedula Juridica"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Cedula Juridica"
+                                                 id="apellido"
+                                                 required="true"
+                                                 value="#{proveedorController.cedulajuridica}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="Cedula" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Telefono"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Telefono"
+                                                 id="cedula"
+                                                 mask="9999-9999"
+                                                 required="true"
+                                                 value="#{proveedorController.telefonoProveedor}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="telefono" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="6">
+                                    <b:commandButton value="Agregar Proveedor"
+                                                     look="success"
+                                                     style="width: 33%"
+                                                     icon="plus"
+                                                     action="#{proveedorController.inserta()}">
+                                    </b:commandButton>
+                                </b:column>     
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -85,7 +85,7 @@ public class UsuarioController extends Usuario implements Serializable {
         } else {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Error al eliminar Usuario");
             FacesContext.getCurrentInstance().addMessage("editaUsuario:id", msg);
-            return "listaUsuario.xhtml";
+            return "editaUsuario.xhtml";
         }
     }
     
@@ -100,7 +100,7 @@ public class UsuarioController extends Usuario implements Serializable {
         } else {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Error al modificar Usuario");
             FacesContext.getCurrentInstance().addMessage("editaUsuario:id", msg);
-             return "listaUsuario.xhtml";
+            return "listaUsuario.xhtml";
         }
     }
 }

@@ -5,6 +5,7 @@
  */
 package gestion;
 
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,9 +35,9 @@ public class UsuarioGestion {
             ResultSet rs = sentencia.executeQuery();
             if (rs.next()) { //Si puede hacer next en el resultado es xq hay un usuario
 //Creo un usuario nuevo con los valores del ResultSet
-                usuario = new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3),
-                rs.getString(4), rs.getString(5),
-                new Roles (rs.getInt(7), rs.getString(8))); //DIVERGENCIA VID S3 1:25:00
+                usuario = new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5),
+                        new Roles(rs.getInt(7), rs.getString(8))); //DIVERGENCIA VID S3 1:25:00
             }
 
         } catch (SQLException ex) {
@@ -45,72 +46,70 @@ public class UsuarioGestion {
 
         return usuario;
     }
-    
-    public static ArrayList<Usuario> getUsuarios(){
+
+    public static ArrayList<Usuario> getUsuarios() {
         ArrayList<Usuario> lista = new ArrayList<>();
-        try{
-            String  SQL_SELECT_USUARIOS="Select * from usuario inner join roles on usuario.idrol = roles.idRol";
+        try {
+            String SQL_SELECT_USUARIOS = "Select * from usuario inner join roles on usuario.idrol = roles.idRol";
             PreparedStatement sentencia = Conexion.getConnection().prepareStatement(SQL_SELECT_USUARIOS);
             ResultSet rs = sentencia.executeQuery();
-            
-            while(rs!= null && rs.next()){
-                lista.add(new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3),
-                rs.getString(4),rs.getString(5),
-                new Roles (rs.getInt(7), rs.getString(8))));
+
+            while (rs != null && rs.next()) {
+                lista.add(new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5),
+                        new Roles(rs.getInt(7), rs.getString(8))));
             }
-        }catch(SQLException ex){
-            Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE,null,ex);
-        }
-        return lista;
-    }
-    
-     public static Usuario getUsuario(int Id){
-        Usuario usuario= null;
-            try {
-                String  SQL_SELECT_USUARIO="SELECT * FROM usuario inner join roles on usuario.idrol = roles.idRol WHERE IDUSUARIO = ?";
-                PreparedStatement sentencia = Conexion.getConnection().prepareStatement(SQL_SELECT_USUARIO);
-                sentencia.setInt(1, Id); 
-                
-                 ResultSet rs = sentencia.executeQuery();
-            
-                if(rs.next()){
-                    usuario = new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3),
-                    rs.getString(4),rs.getString(5),
-                    new Roles (rs.getInt(7), rs.getString(8)));
-                }
-            
-            
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-      return usuario;
+        return lista;
     }
-     
+
+    public static Usuario getUsuario(int Id) {
+        Usuario usuario = null;
+        try {
+            String SQL_SELECT_USUARIO = "SELECT * FROM usuario inner join roles on usuario.idrol = roles.idRol WHERE IDUSUARIO = ?";
+            PreparedStatement sentencia = Conexion.getConnection().prepareStatement(SQL_SELECT_USUARIO);
+            sentencia.setInt(1, Id);
+
+            ResultSet rs = sentencia.executeQuery();
+
+            if (rs.next()) {
+                usuario = new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5),
+                        new Roles(rs.getInt(7), rs.getString(8)));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return usuario;
+    }
+
     private static final String SQL_DELETE_USUARIO = "call PR_EliminarUsuario(?)";
 
     public static boolean eliminar(int Id) { //True si lo Elimina/ False si no
         try {
             //Preparo la Sentencia
-            PreparedStatement ps = Conexion.getConnection().prepareStatement(SQL_DELETE_USUARIO);
+            CallableStatement ps = Conexion.getConnection().prepareCall(SQL_DELETE_USUARIO);
             //Sustituyo los ? del String SQL por los parametros que corresponden
             ps.setInt(1, Id);
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE, null, ex);
-             return false;
+            return false;
         }
-       
+
     }
-    
-    
-     private static final String SQL_UPDATE_USUARIO = "call PR_ActUsuario(?,?,?)";
+
+    private static final String SQL_UPDATE_USUARIO = "call PR_ActUsuario(?,?,?)";
 
     public static boolean modificar(Usuario usuario) { //True si lo Modifica/ False si no
         try {
             //Preparo la Sentencia
-            PreparedStatement ps = Conexion.getConnection().prepareStatement(SQL_UPDATE_USUARIO);
+            CallableStatement ps = Conexion.getConnection().prepareCall(SQL_UPDATE_USUARIO);
             //Sustituyo los ? del String SQL por los parametros que corresponden
             ps.setInt(1, usuario.getId());
             ps.setString(2, usuario.getContraseña());

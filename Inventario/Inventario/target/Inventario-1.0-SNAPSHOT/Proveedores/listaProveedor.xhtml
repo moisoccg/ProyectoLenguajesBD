@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../Files/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="listaUsuariosForm">
+                    <b:row>
+                        <b:column medium-screen="8">
+                            <b><h1 align="center" style="color: #7FB3D5">Lista de Proveedores </h1></b>
+                        </b:column>
+                        <b:column medium-screen="2">
+                            <br></br>
+                            <b:commandButton value="Nuevo Proveedor"
+                                             action="#{proveedorController.nuevoProveedor()}"
+                                             look="success"
+                                             style="width:100%"
+                                             icon="plus"/> 
+                        </b:column>
+                    </b:row>
+                    <br></br>
+                    <br></br>
+                    <b:dataTable value="#{proveedorController.proveedores}"
+                                 var="proveedor">
+                        <b:dataTableColumn value="#{proveedor.idproveedor}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label=" ID Proveedor"/>
+                        <b:dataTableColumn value="#{proveedor.nombreProveedor}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Nombre"/>
+                        <b:dataTableColumn value="#{proveedor.cedulajuridica}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Cedula Juridica"/>
+                        <b:dataTableColumn value="#{proveedor.telefonoProveedor}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Telefono"/>
+                        <b:dataTableColumn style="text-align: center" width="5%"
+                                           label="Editar Proveedor">
+                            <b:commandButton value="Editar"
+                                             icon="pencil"
+                                             action="#{proveedorController.edita(proveedor.idproveedor)}"
+                                             look="info"/>
+
+                        </b:dataTableColumn>
+                    </b:dataTable>
+
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
