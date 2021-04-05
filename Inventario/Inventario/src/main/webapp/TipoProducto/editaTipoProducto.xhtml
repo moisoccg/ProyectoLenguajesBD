@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Files/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="editaTipoProductoForm">
+                    <b:container fluid="true">
+                        <b:panel title="Editar Tipo Producto" look="primary">
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="ID"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="ID"
+                                                 id="idTipoProducto"
+                                                 required="true"
+                                                 disabled="true"
+                                                 value="#{tipoProductoController.idTipoProducto}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="idTipoProducto" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Nombre"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Nombre"
+                                                 id="nombreTipoProducto"
+                                                 required="true"
+                                                 value="#{tipoProductoController.nombreTipoProducto}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="nombre" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Descripcion"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Descripcion"
+                                                 id="descripcionTipoProducto"
+                                                 required="true"
+                                                 value="#{tipoProductoController.descripcionTipoProducto}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="descripcion" />
+                                </b:column>
+                            </b:row>   
+                            <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Actualizar"
+                                                     look="success"
+                                                     style="width: 33%"
+                                                     icon="refresh"
+                                                     action="#{tipoProductoController.modifica()}">
+                                    </b:commandButton>
+                                    <b:commandButton value="Eliminar"
+                                                     icon="trash"
+                                                     look="danger"
+                                                     action="#{tipoProductoController.elimina()}"
+                                                     style="width: 33%"
+                                                     >
+                                    </b:commandButton>
+                                </b:column>     
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

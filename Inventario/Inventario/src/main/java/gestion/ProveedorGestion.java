@@ -10,8 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Conexion;
 import modelo.Proveedor;
-import modelo.Roles;
-import modelo.Usuario;
 
 
 public class ProveedorGestion {
