@@ -1,15 +1,24 @@
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\com\mycompany\inventario\resources\JavaEE8Resource.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\controller\RolesController.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\modelo\Roles.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\controller\ProveedorController.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\modelo\Conexion.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\modelo\nUsuario.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\controller\nUsuarioController.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\gestion\RolesGestion.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\gestion\UsuarioGestion.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\gestion\ProveedorGestion.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\gestion\nUsuarioGestion.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\com\mycompany\inventario\JAXRSConfiguration.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\controller\UsuarioController.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\modelo\Proveedor.java
-D:\Lenguajes de BD\18 Marzo\Inventario\Inventario\src\main\java\modelo\Usuario.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\controller\nUsuarioController.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\controller\TipoProductoController.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\gestion\ProductoGestion.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\modelo\TipoProducto.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\gestion\ProveedorGestion.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\gestion\TipoProductoGestion.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\controller\RolesController.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\gestion\nUsuarioGestion.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\controller\ProductoController.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\gestion\SucursalGestion.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\modelo\Roles.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\modelo\Usuario.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\gestion\UsuarioGestion.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\controller\ProveedorController.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\controller\UsuarioController.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\controller\SucursalController.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\com\mycompany\inventario\JAXRSConfiguration.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\modelo\Conexion.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\modelo\Producto.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\modelo\Proveedor.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\modelo\Sucursal.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\gestion\RolesGestion.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\modelo\nUsuario.java
+D:\Lenguajes de BD\06 de Abril\Inventario\Inventario\src\main\java\com\mycompany\inventario\resources\JavaEE8Resource.java

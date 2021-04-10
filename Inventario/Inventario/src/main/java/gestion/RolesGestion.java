@@ -22,7 +22,7 @@ public class RolesGestion {
     public static ArrayList<Roles> getRoles(){
         ArrayList<Roles> lista = new ArrayList<>();
         try{
-            String  SQL_SELECT_ROLES="Select * from roles";
+            String  SQL_SELECT_ROLES="Select * from roles where idrol <> 3";
             PreparedStatement sentencia = Conexion.getConnection().prepareStatement(SQL_SELECT_ROLES);
             ResultSet rs = sentencia.executeQuery(SQL_SELECT_ROLES);
             
