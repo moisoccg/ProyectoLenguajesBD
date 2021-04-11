@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../Files/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="listaUsuariosForm">
+                    <b:row>
+                        <b:column medium-screen="8">
+                            <b><h1 align="center" style="color: #7FB3D5">Lista de Clientes </h1></b>
+                        </b:column>
+                        <b:column medium-screen="2">
+                            <br></br>
+                             <b:commandButton value="Nuevo Cliente"
+                                              action="#{nUsuarioController.nuevoCliente()}"
+                                                     look="success"
+                                                     style="width:100%"
+                                                     icon="plus"/> 
+                        </b:column>
+                    </b:row>
+                    <br></br>
+                    <br></br>
+                    <b:dataTable value="#{usuarioController.clientes}"
+                                 var="usuarios">
+                        <b:dataTableColumn value="#{usuarios.id}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label=" ID Usuario"/>
+                        <b:dataTableColumn value="#{usuarios.nombre}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Nombre"/>
+                        <b:dataTableColumn value="#{usuarios.apellidos}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Apellido"/>
+                        <b:dataTableColumn value="#{usuarios.cedula}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Cedula"/>
+                        <b:dataTableColumn style="text-align: center" width="5%"
+                            label="Editar Usuario">
+                              <b:commandButton value="Editar"
+                                               icon="pencil"
+                                                action="#{usuarioController.edita(usuarios.id)}"
+                                             look="info"/>
+                              
+                        </b:dataTableColumn>
+                    </b:dataTable>
+              
+                    
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -103,4 +103,10 @@ public class UsuarioController extends Usuario implements Serializable {
             return "listaUsuario.xhtml";
         }
     }
+    
+    public List<Usuario> getClientes() {
+        return UsuarioGestion.getClientes();
+    }
+    
+   
 }

@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Files/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="editaUsuarioForm">
+                    <b:container fluid="true">
+                        <b:panel title="Editar Usuario" look="primary">
+                            <b:row tooltip="No se modifica">
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="ID" for="id"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="ID"
+                                                 id="identificacion"
+                                                 required="true"
+                                                 disabled="true"
+                                                 value="#{usuarioController.id}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="identificacion" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Cedula"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Cedula"
+                                                 id="correo"
+                                                 disabled="true"
+                                                 required="true"
+                                                 value="#{usuarioController.cedula}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="cedula" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Nombre"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Nombre"
+                                                 id="nombre"
+                                                 required="true"
+                                                 disabled="true"
+                                                 value="#{usuarioController.nombre}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="nombre" />
+                                </b:column>
+                            </b:row>   
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Apellido"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Apellido"
+                                                 id="apellido"
+                                                 disabled="true"
+                                                 required="true"
+                                                 value="#{usuarioController.apellidos}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="apellido" />
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Contraseña"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputSecret placeholder="***"
+                                                   required="true"
+                                                   id="clave"
+                                                   value="#{usuarioController.contraseña}"
+                                                   autocomplete="false"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="clave" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Rol"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{usuarioController.rol.idRol}" >
+                                        <f:selectItems value="#{rolController.rol}"
+                                                       var="rol"
+                                                       itemLabel="#{rol.nombreRol}"
+                                                       itemValue="#{rol.idRol}"/>
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="rol" />
+                                </b:column>
+                            </b:row>
+
+                            <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Actualizar"
+                                                     look="success"
+                                                     style="width: 33%"
+                                                     icon="refresh"
+                                                     action="#{usuarioController.modifica()}">
+                                    </b:commandButton>
+                                    <b:commandButton value="Eliminar"
+                                                     icon="trash"
+                                                     look="danger"
+                                                     action="#{usuarioController.elimina()}"
+                                                     style="width: 33%"
+                                                     >
+                                    </b:commandButton>
+                                </b:column>     
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

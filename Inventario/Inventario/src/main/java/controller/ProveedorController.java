@@ -6,7 +6,6 @@
 package controller;
 
 import gestion.ProveedorGestion;
-import gestion.UsuarioGestion;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -14,7 +13,6 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.Proveedor;
-import modelo.Usuario;
 
 
 /**

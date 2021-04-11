@@ -50,7 +50,7 @@ public class UsuarioGestion {
     public static ArrayList<Usuario> getUsuarios() {
         ArrayList<Usuario> lista = new ArrayList<>();
         try {
-            String SQL_SELECT_USUARIOS = "Select * from usuario inner join roles on usuario.idrol = roles.idRol";
+            String SQL_SELECT_USUARIOS = "Select * from usuario inner join roles on usuario.idrol = roles.idRol where usuario.idrol <>3";
             PreparedStatement sentencia = Conexion.getConnection().prepareStatement(SQL_SELECT_USUARIOS);
             ResultSet rs = sentencia.executeQuery();
 
@@ -119,5 +119,24 @@ public class UsuarioGestion {
             Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    ////PARA CLIENTES
+    public static ArrayList<Usuario> getClientes() {
+        ArrayList<Usuario> lista = new ArrayList<>();
+        try {
+            String SQL_SELECT_USUARIOS = "Select * from usuario inner join roles on usuario.idrol = roles.idRol where usuario.idrol =3";
+            PreparedStatement sentencia = Conexion.getConnection().prepareStatement(SQL_SELECT_USUARIOS);
+            ResultSet rs = sentencia.executeQuery();
+
+            while (rs != null && rs.next()) {
+                lista.add(new Usuario(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5),
+                        new Roles(rs.getInt(7), rs.getString(8))));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
     }
 }

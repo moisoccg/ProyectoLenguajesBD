@@ -11,7 +11,15 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import modelo.Canton;
+import modelo.Correo;
+import modelo.Direccion;
+import modelo.Distrito;
+import modelo.Provincia;
 import modelo.Roles;
+import modelo.Telefono;
+import modelo.TipoDireccion;
+import modelo.TipoTelefono;
 import modelo.nUsuario;
 
 /**
@@ -52,5 +60,15 @@ public class nUsuarioController extends nUsuario implements Serializable {
             FacesContext.getCurrentInstance().addMessage("nuevoUsuarioForm: Identificacion", msg);
             return "listaUsuario.xhtml";
         }
+    }
+    
+    public String nuevoCliente() {
+        nUsuario u = new nUsuario();
+        this.setNombre("");
+        this.setApellidos("");
+        this.setContraseña("");
+        this.setCedula("");
+        
+        return "nuevoCliente.xhtml";
     }
 }

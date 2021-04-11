@@ -20,4 +20,19 @@ public class nUsuarioGestion {
         }  
         return true;
     }
+    /////PARA CLIENTE HAY QUE CAMBIARLO
+    public static boolean insertarCliente(nUsuario nuevoUsuario) throws Exception{
+        String  SQL_INSERT_USUARIO="call PR_AgregarUsuario('%s', '%s', '%s', '%s', '%s')";
+         SQL_INSERT_USUARIO=String.format(SQL_INSERT_USUARIO, nuevoUsuario.getNombre(),
+                                            nuevoUsuario.getApellidos(),
+                                            nuevoUsuario.getContraseña(),
+                                            nuevoUsuario.getCedula(),
+                                            nuevoUsuario.getRol().getIdRol());
+         PreparedStatement sentencia = Conexion.getConnection().prepareStatement(SQL_INSERT_USUARIO);
+         int count=sentencia.executeUpdate(SQL_INSERT_USUARIO);
+        if (count==0){
+            return false;
+        }  
+        return true;
+    }
 }
