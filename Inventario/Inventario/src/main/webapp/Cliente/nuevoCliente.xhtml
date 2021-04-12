@@ -91,7 +91,7 @@
                                                  id="telefono"
                                                  mask="9999-9999"
                                                  required="true"
-                                                 value="#{proveedorController.telefonoProveedor}"/>
+                                                 value="#{telefonoController.telefono}"/>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
                                     <b:message for="telefono" />
@@ -116,7 +116,7 @@
                                     <h:outputLabel value="Provincia"/>   
                                 </b:column>
                                 <b:column medium-screen="2">
-                                    <b:selectOneMenu value="#{provinciaController.idprovincia}">
+                                    <b:selectOneMenu value="#{provinciaController.idprovincia}" >
                                         
                                         <f:selectItem itemLabel="Seleccione" itemValue=""/>
                                         <f:selectItems value="#{provinciaController.provincias}"
@@ -165,7 +165,7 @@
                                     <b:message for="direccion" />
                                 </b:column>
                             </b:row>
-
+     
                             <b:row>
                                 <b:column medium-screen="2"/>
                                 <b:column medium-screen="4">
@@ -173,7 +173,11 @@
                                                      look="success"
                                                      style="width: 33%"
                                                      icon="plus"
-                                                     action="#{nUsuarioController.inserta()}">
+                                                     action="#{nUsuarioController.insertaCliente(correoController.correoelectronico,
+                                                               telefonoController.telefono, tipotelefonoController.idtipotelefono,
+                                                               tipodireccionController.idtipodireccion, provinciaController.idprovincia,
+                                                               cantonController.idcanton, distritoController.iddistrito, 
+                                                               direccionController.direccion)}">
                                     </b:commandButton>
                                 </b:column>     
                             </b:row>

@@ -22,6 +22,7 @@ import modelo.TipoDireccion;
 import modelo.TipoTelefono;
 import modelo.nUsuario;
 
+
 /**
  *
  * @author Raque
@@ -29,10 +30,16 @@ import modelo.nUsuario;
 @Named(value = "nUsuarioController")
 @SessionScoped
 public class nUsuarioController extends nUsuario implements Serializable {
-
-    /**
-     * Creates a new instance of nUsuarioController
-     */
+     
+    Canton canton = new Canton();
+    Correo correo = new Correo();
+    Direccion direccion = new Direccion();
+    Distrito distrito = new Distrito();
+    Provincia provincia = new Provincia();
+    Telefono telefono = new Telefono();
+    TipoDireccion tdireccion = new TipoDireccion();
+    TipoTelefono ttelefono = new TipoTelefono();
+            
     public nUsuarioController() {
     }
 
@@ -62,13 +69,74 @@ public class nUsuarioController extends nUsuario implements Serializable {
         }
     }
     
+    
+    public String insertaCliente(String correo,
+                String telefono, int tipotelefono, int tdireccion, int provincia,
+                int canton, int distrito, String  direccion) throws Exception {
+        if (nUsuarioGestion.insertarCliente(this, correo,
+                 telefono,  tipotelefono,  tdireccion,  provincia,
+                 canton,  distrito,   direccion)) {
+            this.setNombre("");
+            this.setApellidos("");
+            this.setContraseña("");
+            this.setCedula("");
+            this.setRol(null);
+            this.setProvincia(null);
+            this.setCanton(null);
+            this.setDistrito(null);
+            this.setDireccion(null);
+            this.setTdireccion(null);
+            this.setTelefono(null);
+            this.setTtelefono(null);
+            this.setCorreo(null);
+            return "listaCliente.xhtml";
+        } else {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Error", "Posible identificación duplicada");
+            FacesContext.getCurrentInstance().addMessage("nuevoUsuarioForm: Identificacion", msg);
+            return "listaCliente.xhtml";
+        }
+    }
+    
+        public String insertaCliente() throws Exception {
+        if (nUsuarioGestion.insertarCliente(this)) {
+            this.setNombre("");
+            this.setApellidos("");
+            this.setContraseña("");
+            this.setCedula("");
+            this.setRol(null);
+            this.setProvincia(null);
+            this.setCanton(null);
+            this.setDistrito(null);
+            this.setDireccion(null);
+            this.setTdireccion(null);
+            this.setTelefono(null);
+            this.setTtelefono(null);
+            this.setCorreo(null);
+            return "listaCliente.xhtml";
+        } else {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Error", "Posible identificación duplicada");
+            FacesContext.getCurrentInstance().addMessage("nuevoUsuarioForm: Identificacion", msg);
+            return "listaCliente.xhtml";
+        }
+    }
+    
     public String nuevoCliente() {
         nUsuario u = new nUsuario();
-        this.setNombre("");
-        this.setApellidos("");
-        this.setContraseña("");
-        this.setCedula("");
-        
+            this.setNombre("");
+            this.setApellidos("");
+            this.setContraseña("");
+            this.setCedula("");
+            this.setRol(null);
+            this.setProvincia(null);
+            this.setCanton(null);
+            this.setDistrito(null);
+            this.setDireccion(null);
+            this.setTdireccion(null);
+            this.setTelefono(null);
+            this.setTtelefono(null);
+            this.setCorreo(null);
         return "nuevoCliente.xhtml";
     }
 }
