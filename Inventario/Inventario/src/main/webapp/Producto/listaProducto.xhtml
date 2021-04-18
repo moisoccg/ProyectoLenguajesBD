@@ -22,6 +22,31 @@
                                                      look="success"
                                                      style="width:100%"
                                                      icon="plus"/> 
+                              <br></br>
+                              <br></br>
+                              <b:commandButton
+                                        value="Ver Productos por vencer"
+                                        look="info"
+                                        iconAwesome="fas fa-download"
+                                        style="width:100%"
+                                        action="#{reporteController.descargarPdf()}"/>
+                              
+                              <br></br>
+                              <br></br>
+                              <b:commandButton
+                                        value="Ver Stock minimo"
+                                        look="info"
+                                        iconAwesome="fas fa-download"
+                                        style="width:100%"
+                                        action="#{reporteController.cantidadMinima()}"/>
+                               <br></br>
+                              <br></br>
+                              <b:commandButton
+                                        value="Ver Reporte General"
+                                        look="info"
+                                        iconAwesome="fas fa-download"
+                                        style="width:100%"
+                                        action="#{reporteController.reporteGeneral()}"/>
                         </b:column>
                     </b:row>
                     <br></br>

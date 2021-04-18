@@ -23,7 +23,7 @@ public class Conexion {
 
 
 
-    private Conexion() {
+    public Conexion() {
 //Inicializacion de la Conexion
     try {
 //Se suscribe el controlador de la BD

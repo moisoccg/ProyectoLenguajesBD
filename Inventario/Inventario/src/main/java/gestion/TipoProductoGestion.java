@@ -18,7 +18,7 @@ import modelo.TipoProducto;
  */
 public class TipoProductoGestion {
     
-    private static final String INSERT_TIPOPRODUCTO_SQL = "{call PR_AgregarTipoProducto(?, ?)}";
+    private static final String INSERT_TIPOPRODUCTO_SQL = "call PR_AgregarTipoProducto(?, ?)";
     private static final String SELECT_TIPOPRODUCTO_BY_ID = "select * from tipoproducto where idtipoproducto = ?";
     private static final String SELECT_ALL_TIPOPRODUCTO = "select * from tipoproducto";
     private static final String DELETE_TIPOPRODUCTO_SQL = "delete from tipoproducto where idtipoproducto = ?";

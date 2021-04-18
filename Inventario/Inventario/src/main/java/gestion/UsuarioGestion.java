@@ -19,7 +19,7 @@ import modelo.Usuario;
 public class UsuarioGestion {
     //String SQL para recuperar un usuario
 
-    private static final String SQL_VALIDA = "SELECT * FROM usuario inner join roles on usuario.idrol = roles.idRol WHERE IDUSUARIO = ? and CONTRASEÑA = ?";
+    private static final String SQL_VALIDA = "SELECT * FROM usuario inner join roles on usuario.idrol = roles.idRol WHERE IDUSUARIO = ? and CLAVE = ?";
 
 //Metodo para validar un usuario en la BD
     public static Usuario valida(int Id, String Contraseña) {

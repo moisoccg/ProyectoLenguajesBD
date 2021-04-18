@@ -4,9 +4,10 @@ controller\TipoDireccionController.class
 modelo\Provincia.class
 modelo\Proveedor.class
 gestion\UsuarioGestion.class
+controller\ReporteController.class
 gestion\TipoDireccionGestion.class
-modelo\nUsuario.class
 modelo\TipoProducto.class
+modelo\nUsuario.class
 gestion\CantonGestion.class
 gestion\TipoTelefonoGestion.class
 gestion\ProductoGestion.class
@@ -17,9 +18,9 @@ modelo\Canton.class
 controller\UsuarioController.class
 modelo\Sucursal.class
 gestion\RolesGestion.class
-controller\DistritoController.class
 modelo\Roles.class
 modelo\Conexion.class
+controller\DistritoController.class
 modelo\Correo.class
 gestion\DistritoGestion.class
 controller\CorreoController.class
@@ -37,9 +38,9 @@ gestion\nUsuarioGestion.class
 modelo\Direccion.class
 com\mycompany\inventario\JAXRSConfiguration.class
 controller\TipoTelefonoController.class
-controller\nUsuarioController.class
 modelo\Usuario.class
+controller\nUsuarioController.class
 controller\CantonController.class
 com\mycompany\inventario\resources\JavaEE8Resource.class
-controller\ProductoController.class
 modelo\Distrito.class
+controller\ProductoController.class
