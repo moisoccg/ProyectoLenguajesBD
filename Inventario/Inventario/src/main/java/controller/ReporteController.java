@@ -90,4 +90,25 @@ public class ReporteController implements Serializable {
             Logger.getLogger(ReporteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+        public void verOrden(int idOrden) {
+        try {
+            Conexion consulta = new Conexion();
+            File jasper = new File(FacesContext.getCurrentInstance()
+                    .getExternalContext()
+                    .getRealPath("/Reportes/verOrden.jasper"));  //crear JASPER
+            JasperPrint reporteJasper
+                    = JasperFillManager.fillReport(
+                            jasper.getPath(), null, consulta.getConnection());
+            HttpServletResponse respuesta
+                    = (HttpServletResponse) FacesContext.getCurrentInstance()
+                            .getExternalContext().getResponse();
+            respuesta.addHeader("Content-disposition", "attachment; filename=Orden"+idOrden+".pdf");
+            ServletOutputStream flujo = respuesta.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(reporteJasper, flujo);
+            FacesContext.getCurrentInstance().responseComplete();
+        } catch (JRException | IOException ex) {
+            Logger.getLogger(ReporteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
