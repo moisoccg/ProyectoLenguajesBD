@@ -2,6 +2,11 @@
 --  File created - Saturday-April-17-2021   
 --------------------------------------------------------
 --------------------------------------------------------
+--  DDL for Sequence CORDEN
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "USQL"."CORDEN"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
 --  DDL for Sequence CCORREO
 --------------------------------------------------------
 
@@ -1295,7 +1300,7 @@ p_localordenid number;
 
 begin
 
-SELECT CTIPOPRODUCTO.NEXTVAL
+SELECT CORDEN.NEXTVAL
 INTO p_localordenid FROM DUAL;
 
 INSERT INTO orden (
