@@ -11,100 +11,53 @@
         <ui:composition template="./../Files/plantillas/plantilla.xhtml">
 
             <ui:define name="content">
-                <h:form id="nuevoUsuarioForm">
+                <h:form id="agregarProdAOrdenForm">
                     <b:container fluid="true">
-                            <b:panel title="Nuevo Usuario" look="primary">
-                            <b:row>
+                        <b:panel title="Agregar Producto" look="primary">
+                            <b:row tooltip="No se modifica">
                                 <b:column medium-screen="2">
-                                    <h:outputLabel value="Nombre"/>   
+                                    <h:outputLabel value="ID Orden" for="id"/>   
                                 </b:column>
                                 <b:column medium-screen="4">
-                                    <b:inputText placeholder="Nombre"
-                                                 id="nombre"
+                                    <b:inputText placeholder="ID"
+                                                 id="identificacion"
                                                  required="true"
-                                                 value="#{nUsuarioController.nombre}"/>
+                                                 value="#{ordenController.idOrden}"/>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="nombre" />
-                                </b:column>
-                            </b:row>   
-                            <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Apellido"/>   
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:inputText placeholder="Apellido"
-                                                 id="apellido"
-                                                 required="true"
-                                                 value="#{nUsuarioController.apellidos}"/>
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="apellido" />
+                                    <b:message for="identificacion" />
                                 </b:column>
                             </b:row>
                             <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Contraseña"/>   
-                                </b:column>
                                 <b:column medium-screen="4">
-                                   <b:inputSecret placeholder="***"
-                                           required="true"
-                                           id="clave"
-                                           value="#{nUsuarioController.contraseña}"
-                                           autocomplete="false"/>
+                                    <h:outputLabel value="Producto"/>   
                                 </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="clave" />
-                                </b:column>
-                            </b:row>
-                                <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Cedula"/>   
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:inputText placeholder="Cedula"
-                                                 id="cedula"
-                                                 required="true"
-                                                 value="#{nUsuarioController.cedula}"/>
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="cedula" />
-                                </b:column>
-                            </b:row>
-                             <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Rol"/>   
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:selectOneMenu value="#{nUsuarioController.rol.idRol}">
-                                        <f:selectItem itemLabel="Seleccione" itemValue=""/>
-                                        <f:selectItems value="#{rolController.rol}"
-                                                       var="rol"
-                                                       itemLabel="#{rol.nombreRol}"
-                                                       itemValue="#{rol.idRol}"/>
+                                <b:selectOneMenu value="#{ordenProductoController.idProducto}" >
+                                    <f:selectItems value="#{productoController.productos}"
+                                                       var="productos"
+                                                       itemLabel="#{productos.descripcionProducto}"
+                                                       itemValue="#{productos.idProducto}"/>
                                     </b:selectOneMenu>
-                                </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="departamento" />
+                                    <b:message for="descripcionProducto" />
                                 </b:column>
                             </b:row>
                            
                             <b:row>
                                 <b:column medium-screen="2"/>
                                 <b:column medium-screen="4">
-                                    <b:commandButton value="Agregar Equipo"
+                                    <b:commandButton value="Agregar"
                                                      look="success"
                                                      style="width: 33%"
-                                                     icon="plus"
-                                                     action="#{nUsuarioController.inserta()}">
-                                </b:commandButton>
+                                                     icon="refresh"
+                                                     action="#{ordenProductoController.inserta(ordenController.idOrden,ordenProductoController.idProducto,ordenController.sucursal.idSucursal, ordenController.usuario.id)}">
+                                    </b:commandButton>
                                 </b:column>     
                             </b:row>
                         </b:panel>
                     </b:container>
                 </h:form>
             </ui:define>
-
         </ui:composition>
 
     </body>

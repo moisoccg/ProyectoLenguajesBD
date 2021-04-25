@@ -10,91 +10,45 @@
         <ui:composition template="./../Files/plantillas/plantilla.xhtml">
 
             <ui:define name="content">
-                <h:form id="listaProductoForm">
+                <h:form id="listaOrdenForm">
                     <b:row>
-                        <b:column medium-screen="8">
-                            <b><h1 align="center" style="color: #7FB3D5">Lista de Productos </h1></b>
+                         <b:column medium-screen="8">
+                            <b><h1 align="center" style="color: #7FB3D5">Lista de Ordenes </h1></b>
                         </b:column>
                         <b:column medium-screen="2">
                             <br></br>
-                             <b:commandButton value="Nuevo Producto"
-                                              action="#{productoController.nuevoProducto()}"
+                             <b:commandButton value="Nueva Orden"
+                                              action="#{ordenController.nuevaOrden()}"
                                                      look="success"
                                                      style="width:100%"
                                                      icon="plus"/> 
-                              <br></br>
-                              <br></br>
-                              <b:commandButton
-                                        value="Ver Productos por vencer"
-                                        look="info"
-                                        iconAwesome="fas fa-download"
-                                        style="width:100%"
-                                        action="#{reporteController.descargarPdf()}"/>
-                              
-                              <br></br>
-                              <br></br>
-                              <b:commandButton
-                                        value="Ver Stock minimo"
-                                        look="info"
-                                        iconAwesome="fas fa-download"
-                                        style="width:100%"
-                                        action="#{reporteController.cantidadMinima()}"/>
-                               <br></br>
-                              <br></br>
-                              <b:commandButton
-                                        value="Ver Reporte General"
-                                        look="info"
-                                        iconAwesome="fas fa-download"
-                                        style="width:100%"
-                                        action="#{reporteController.reporteGeneral()}"/>
                         </b:column>
                     </b:row>
-                    <br></br>
-                    <br></br>
-                    <b:dataTable value="#{productoController.productos}"
-                                 var="productos">
-                        <b:dataTableColumn value="#{productos.idProducto}" 
+                    <b:dataTable value="#{ordenController.ordenes}"
+                                 var="ordenes">
+                        <b:dataTableColumn value="#{ordenes.idOrden}" 
                                            width="10%"
                                            style="text-align: center"
-                                           label=" ID Producto"/>
-                        <b:dataTableColumn value="#{productos.descripcionProducto}" 
+                                           label=" ID Orden"/>
+                        <b:dataTableColumn value="#{ordenes.fechaOrden}" 
                                            width="10%"
                                            style="text-align: center"
-                                           label="Descripcion"/>
-                        <b:dataTableColumn value="#{productos.precioProducto}" 
-                                           width="10%"
-                                           style="text-align: center"
-                                           label="Precio"/>
-                        <b:dataTableColumn value="#{productos.fechaElaborado}" 
-                                           width="10%"
-                                           style="text-align: center"
-                                           label="Elaborado"/>
-                         <b:dataTableColumn value="#{productos.fechaVencimiento}" 
-                                           width="10%"
-                                           style="text-align: center"
-                                           label="Vencimiento"/>
-                         <b:dataTableColumn value="#{productos.tipoProducto.idTipoProducto}" 
-                                           width="10%"
-                                           style="text-align: center"
-                                           label="Tipo"/>
-                        <b:dataTableColumn value="#{productos.numeroSerie}" 
-                                           width="10%"
-                                           style="text-align: center"
-                                           label="# Serie"/>
-                        <b:dataTableColumn value="#{productos.cantidadStock}" 
-                                           width="10%"
-                                           style="text-align: center"
-                                           label="Stock"/>
-                         <b:dataTableColumn value="#{productos.cantidadMinima}" 
-                                           width="10%"
-                                           style="text-align: center"
-                                           label="Cant. Minima"/>
-                         
+                                           label="Fecha Orden"/>
+                        <b:dataTableColumn style="text-align: center" width="5%"
+                            label="Orden">
+                              <b:commandButton
+                                        value="Ver Orden"
+                                        look="info"
+                                        iconAwesome="fas fa-download"
+                                        style=""
+                                        action="#{reporteController.verOrden(ordenes.idOrden)}"/>
+                              
+                        </b:dataTableColumn>
                         <b:dataTableColumn style="text-align: center" width="5%"
                             label="Editar Producto">
-                              <b:commandButton value="Editar"
+                              <b:commandButton value="Agregue productos"
                                                icon="pencil"
-                                                action="#{productoController.edita(productos.idProducto)}"
+                                                action="#{ordenController.agregaProducto(ordenes.idOrden)}"
                                              look="info"/>
                               
                         </b:dataTableColumn>
