@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Files/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="nuevoOrdenForm">
+                    <b:container fluid="true">
+                             <b:panel title="Nuevo Orden" look="primary">
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Fecha"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:dateTimePicker value="#{ordenController.fechaOrden}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="fechaorden" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Sucursal"/>   
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:selectOneMenu value="#{ordenController.idSucursal}" >
+                                        <f:selectItems value="#{sucursalController.sucursales}"
+                                                       var="sucursales"
+                                                       itemLabel="#{sucursales.nombreSucursal}"
+                                                       itemValue="#{sucursales.idSucursal}"/>
+                                    </b:selectOneMenu>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="tipo" />
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Agregar Orden"
+                                                     look="success"
+                                                     style="width: 33%"
+                                                     icon="refresh"
+                                                     action="#{ordenController.inserta()}">
+                                    </b:commandButton>
+                                </b:column>     
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

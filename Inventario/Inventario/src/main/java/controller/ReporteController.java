@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
@@ -100,6 +102,28 @@ public class ReporteController implements Serializable {
             JasperPrint reporteJasper
                     = JasperFillManager.fillReport(
                             jasper.getPath(), null, consulta.getConnection());
+            HttpServletResponse respuesta
+                    = (HttpServletResponse) FacesContext.getCurrentInstance()
+                            .getExternalContext().getResponse();
+            respuesta.addHeader("Content-disposition", "attachment; filename=Orden"+idOrden+".pdf");
+            ServletOutputStream flujo = respuesta.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(reporteJasper, flujo);
+            FacesContext.getCurrentInstance().responseComplete();
+        } catch (JRException | IOException ex) {
+            Logger.getLogger(ReporteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    public void orden(int idOrden) {
+        Conexion consulta = new Conexion();
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("orden", idOrden);
+        try {
+            File jasper = new File(FacesContext.getCurrentInstance()
+                    .getExternalContext()
+                    .getRealPath("/Reportes/nOrden.jasper"));
+            JasperPrint reporteJasper = JasperFillManager.fillReport(
+                    jasper.getPath(), parametros, consulta.getConnection());
             HttpServletResponse respuesta
                     = (HttpServletResponse) FacesContext.getCurrentInstance()
                             .getExternalContext().getResponse();

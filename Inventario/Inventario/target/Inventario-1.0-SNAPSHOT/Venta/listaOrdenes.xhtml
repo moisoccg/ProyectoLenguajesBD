@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../Files/plantillas/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="listaOrdenForm">
+                    <b:row>
+                         <b:column medium-screen="8">
+                            <b><h1 align="center" style="color: #7FB3D5">Lista de Ordenes </h1></b>
+                        </b:column>
+                        <b:column medium-screen="2">
+                            <br></br>
+                             <b:commandButton value="Nueva Orden"
+                                              action="#{ordenController.nuevaOrden()}"
+                                                     look="success"
+                                                     style="width:100%"
+                                                     icon="plus"/> 
+                        </b:column>
+                    </b:row>
+                    <b:dataTable value="#{ordenController.ordenes}"
+                                 var="ordenes">
+                        <b:dataTableColumn value="#{ordenes.idOrden}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label=" ID Orden"/>
+                        <b:dataTableColumn value="#{ordenes.fechaOrden}" 
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Fecha Orden"/>
+                        <b:dataTableColumn style="text-align: center" width="5%"
+                            label="Orden">
+                              <b:commandButton
+                                        value="Ver Orden"
+                                        look="info"
+                                        iconAwesome="fas fa-download"
+                                        style=""
+                                        action="#{reporteController.orden(ordenes.idOrden)}"/>
+                              
+                        </b:dataTableColumn>
+                        <b:dataTableColumn style="text-align: center" width="5%"
+                            label="Editar Producto">
+                              <b:commandButton value="Agregue productos"
+                                               icon="pencil"
+                                                action="#{ordenController.agregaProducto(ordenes.idOrden)}"
+                                             look="info"/>
+                              
+                        </b:dataTableColumn>
+                    </b:dataTable>
+              
+                    
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

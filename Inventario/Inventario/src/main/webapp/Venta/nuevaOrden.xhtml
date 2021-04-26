@@ -11,93 +11,44 @@
         <ui:composition template="./../Files/plantillas/plantilla.xhtml">
 
             <ui:define name="content">
-                <h:form id="nuevoUsuarioForm">
+                <h:form id="nuevoOrdenForm">
                     <b:container fluid="true">
-                            <b:panel title="Nuevo Usuario" look="primary">
+                             <b:panel title="Nuevo Orden" look="primary">
                             <b:row>
                                 <b:column medium-screen="2">
-                                    <h:outputLabel value="Nombre"/>   
+                                    <h:outputLabel value="Fecha"/>   
                                 </b:column>
                                 <b:column medium-screen="4">
-                                    <b:inputText placeholder="Nombre"
-                                                 id="nombre"
-                                                 required="true"
-                                                 value="#{nUsuarioController.nombre}"/>
+                                    <b:dateTimePicker value="#{ordenController.fechaOrden}"/>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="nombre" />
-                                </b:column>
-                            </b:row>   
-                            <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Apellido"/>   
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:inputText placeholder="Apellido"
-                                                 id="apellido"
-                                                 required="true"
-                                                 value="#{nUsuarioController.apellidos}"/>
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="apellido" />
+                                    <b:message for="fechaorden" />
                                 </b:column>
                             </b:row>
                             <b:row>
                                 <b:column medium-screen="2">
-                                    <h:outputLabel value="Contraseña"/>   
+                                    <h:outputLabel value="Sucursal"/>   
                                 </b:column>
                                 <b:column medium-screen="4">
-                                   <b:inputSecret placeholder="***"
-                                           required="true"
-                                           id="clave"
-                                           value="#{nUsuarioController.contraseña}"
-                                           autocomplete="false"/>
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="clave" />
-                                </b:column>
-                            </b:row>
-                                <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Cedula"/>   
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:inputText placeholder="Cedula"
-                                                 id="cedula"
-                                                 required="true"
-                                                 value="#{nUsuarioController.cedula}"/>
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="cedula" />
-                                </b:column>
-                            </b:row>
-                             <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Rol"/>   
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:selectOneMenu value="#{nUsuarioController.rol.idRol}">
-                                        <f:selectItem itemLabel="Seleccione" itemValue=""/>
-                                        <f:selectItems value="#{rolController.rol}"
-                                                       var="rol"
-                                                       itemLabel="#{rol.nombreRol}"
-                                                       itemValue="#{rol.idRol}"/>
+                                    <b:selectOneMenu value="#{ordenController.idSucursal}" >
+                                        <f:selectItems value="#{sucursalController.sucursales}"
+                                                       var="sucursales"
+                                                       itemLabel="#{sucursales.nombreSucursal}"
+                                                       itemValue="#{sucursales.idSucursal}"/>
                                     </b:selectOneMenu>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="departamento" />
+                                    <b:message for="tipo" />
                                 </b:column>
                             </b:row>
-                           
                             <b:row>
-                                <b:column medium-screen="2"/>
                                 <b:column medium-screen="4">
-                                    <b:commandButton value="Agregar Equipo"
+                                    <b:commandButton value="Agregar Orden"
                                                      look="success"
                                                      style="width: 33%"
-                                                     icon="plus"
-                                                     action="#{nUsuarioController.inserta()}">
-                                </b:commandButton>
+                                                     icon="refresh"
+                                                     action="#{ordenController.inserta()}">
+                                    </b:commandButton>
                                 </b:column>     
                             </b:row>
                         </b:panel>
